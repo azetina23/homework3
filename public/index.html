@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+  <head>
+    <title>Personal App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <style>
+      h1 {text-align: center; font-size: 40px;}
+      .top {width: 50%;}
+      .other {width: 20%;}
+      table, td {
+      	padding: 8px;
+      	border-collapse: collapse;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="container" ng-controller="AppCtrl">
+      <h1>Resume</h1>
+      <hr class="top">
+      <br><br>
+
+      <div align= "center">
+        <h2>Education</h2>
+        <hr class="other">
+        <table>
+          <tr ng-repeat="info in resume" | filter: {type: 'edu'}>
+            <td>{{info.school}}<br>{{info.degree}}<br>{{info.last_year}}</td>
+          </tr>
+        <table>
+      </div>
+
+      <div align= "center">
+        <h2>Skills</h2>
+        <hr class="other">
+
+        <table>
+          <tr ng-repeat="info in resume" | filter: {type: 'skill'}>
+            <td>{{info.skill}}</td>
+          </tr>
+        </table>
+      </div>
+      <br><br><br>
+
+      <div align="center">
+        <h2>Projects</h2>
+        <hr class="other">
+        <br>
+        <table>
+          <tr>
+            <td ng-repeat="info in resume" | filter: {type: 'project'}>{{info.title}}<br>{{info.description}}</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+      <script src="controllers/controller.js"></script>
+  </body>
+</html>
